@@ -67,7 +67,7 @@ array_t tsort(const graph_t& G)
 
 
     // 各頂点vの終了時刻v.fを計算するためにDFS(G)を呼び出す
-    for (index_t v = 0; v < n; v++) {
+    for (index_t v = 0; v < n; ++v) {
         if (color[v] == vcolor::white && !dfs_visit(v)) { return {}; };
     }
     reverse(lst.begin(), lst.end());  // リストが逆順にソートされているのでreverseを行う

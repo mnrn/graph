@@ -1,6 +1,6 @@
 /**
  * @brief 深さ優先探索に関する物置
- * @date  2016/02/13 ~ 2016/03/13
+ * @date  2016/02/13 ~ 2017/01/03
  */
 
 
@@ -108,7 +108,7 @@ std::pair<vertices_t, array_t> dfs(const graph_t& G)
         vs[u].d = time;              // timeの値を発見時刻u.dとして記録し、
         vs[u].color = vcolor::gray;  // uを灰に彩色する
         // 各頂点v ∈ Adj[u]を吟味するので、深さ優先探索は辺(u, v)を探索する(explore)という
-        for (auto& e : G[u]) {                   // uと隣接する各頂点vを調べ、
+        for (auto&& e : G[u]) {                  // uと隣接する各頂点vを調べ、
             index_t v = e.dst;
             if (vs[v].color == vcolor::white) {  // vが白なら再帰的にvを訪問する
                 vs[v].pi = u;
@@ -150,12 +150,12 @@ std::pair<vertices_t, array_t> dfs(const graph_t& G)
     };
     
 
-    for (auto& u : vs) {
+    for (auto&& u : vs) {
         u.color = vcolor::white;                // 頂点をすべて白に彩色し、
         u.pi    = limits::nil;                  // π属性をNILに初期化する
     }
     time = 0;                                   // 時刻カウンターを初期化
-    for (auto u = 0; u < n; u++) {              // Vの各頂点を順番に調べ、
+    for (auto u = 0; u < n; ++u) {              // Vの各頂点を順番に調べ、
         if (vs[u].color == vcolor::white) {     // 白頂点を発見すると、
             iterative_visit(u);                 // visitを呼び出して訪問する
             // visitを呼び出すたびに、頂点uが深さ優先森の新しい木の根になる

@@ -24,7 +24,7 @@
  *         フローの定義の2つの条件を説明しておく. 容量制限は、ある頂点から別の頂点へのフローは非負でなければならず、また与えられた容量を超えてはいけないという制約である
  *         フロー保存則は、入口と出口以外の頂点では、流れ込むフローの合計が流れ出るフローの合計に一致すること、すなわち「流入量 = 流出量」が成立することを要請する
  *
- * @date   2016/02/22 ~ 2016/03/03
+ * @date   2016/02/22 ~ 2017/01/03
  */
 
 
@@ -93,7 +93,7 @@ struct ford_fulkerson {
     explicit ford_fulkerson(const graph_t& G)
     {
         *this = ford_fulkerson(G.size());
-        for (index_t i = 0; i < n; i++) {
+        for (index_t i = 0; i < n; ++i) {
             for (auto&& e : G[i]) { add_edge(e.src, e.dst, e.c); }
         }
     }

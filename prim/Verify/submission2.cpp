@@ -1,7 +1,7 @@
 /**
  * @brief Primのアルゴリズムのテストを行います
  * @note  関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_12_A
- * @date  2016/04/17
+ * @date  2016/04/17~2017/01/03
  */
 
 
@@ -142,7 +142,7 @@ static index_t extract_min(const vertices_t& V, index_t n)
 {
     index_t  u = limits::nil;
     weight_t d = limits::inf; 
-    for (index_t v = 0; v < n; v++) {
+    for (index_t v = 0; v < n; ++v) {
         if (!V[v].visited && V[v].d < d) { d = V[v].d; u = v; }
     }
     return u;
@@ -182,7 +182,7 @@ std::pair<vertices_t, weight_t> prim(const matrix_t& W, index_t r)
         // 最小全域木Aに属さないある孤立点(Aの辺と接続していない頂点)を連結する軽い辺を探す
         index_t u = extract_min(A, n);
         if (u == limits::nil) { break; }   // 頂点uがNILを指すならば、探索は終了であり、最小全域木Aは A = {(v, v.π) : v ∈ V - { r } }である
-        for (index_t v = 0; v < n; v++) {  // 頂点uの隣接行列の走査を行う
+        for (index_t v = 0; v < n; ++v) {  // 頂点uの隣接行列の走査を行う
             if (W[u][v] < A[v].key) {      // 白または、灰頂点に対しては、属性の更新確認を行う必要がある
                 A[v].pi  = u;              // vのπ属性と
                 A[v].key = W[u][v];        // key属性を更新する

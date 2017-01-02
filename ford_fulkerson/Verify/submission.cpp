@@ -1,7 +1,7 @@
 /**
  * @brief  最大フロー問題におけるFord-Fulkerson法を扱う
  * @note   関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A
- * @date   2016/02/24 ~ 2016/03/28
+ * @date   2016/02/24 ~ 2017/01/03
  */
 
 
@@ -160,7 +160,7 @@ struct ford_fulkerson {
     explicit ford_fulkerson(const graph_t& G)
     {
         *this = ford_fulkerson(G.size());
-        for (index_t i = 0; i < n; i++) {
+        for (index_t i = 0; i < n; ++i) {
             for (auto&& e : G[i]) { add_edge(e.src, e.dst, e.c); }
         }
     }

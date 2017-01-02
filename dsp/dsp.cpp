@@ -48,7 +48,7 @@ std::pair<indices_t, array_t>  dsp(const graph_t& G, index_t s)
 
     // Θ(V)の手続きによって最短路推定値と先行点を初期化する
     auto initsinglesource = [](indices_t& pi, array_t& d, index_t s, index_t n) -> void {
-        for (index_t i = 0; i < n; i++) { d[i]  = limits::inf; pi[i] = limits::nil;}
+        for (index_t i = 0; i < n; ++i) { d[i]  = limits::inf; pi[i] = limits::nil;}
         d[s] = 0;
     };
     // 辺(u, v)の緩和(relaxing)はuを経由することでvへの既知の最短路が改善できるか否か判定し、改善できるならばv.dとv.πを更新する
@@ -61,7 +61,7 @@ std::pair<indices_t, array_t>  dsp(const graph_t& G, index_t s)
     
     array_t sorted = tsort(G);      // Gの頂点をトポロジカルソートする
     initsinglesource(pi, d, s, n);  // 最短路推定値と先行点を初期化
-    for (auto& u : sorted) {        // for トポロジカルソート順に、各頂点u(頂点ごとに1回ずつ実行)
+    for (auto&& u : sorted) {       // for トポロジカルソート順に、各頂点u(頂点ごとに1回ずつ実行)
         for (auto e : G[u]) {       // for 各頂点 v ∈ G.Adj[u](全体として各辺をちょうど1回ずつ)
             relax(e, pi, d);        // 緩和する
         }

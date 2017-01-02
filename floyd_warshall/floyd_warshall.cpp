@@ -26,7 +26,7 @@
  *         また、ある行列では、L^(m) = (lij^(m))やD^(m) = (dij^(m))のように、反復回数を表すのに肩に括弧付きの添字を用いることがある
  *         最後に、n x nの行列Aに対して、nの値は属性A.rowsに格納されている 
  *
- * @date   2016/02/21 ~ 2016/03/12
+ * @date   2016/02/21 ~ 2017/01/03
  */
 
 
@@ -84,7 +84,7 @@ GRAPH_BEGIN
  *         i,j,k = 0,1,...,n-1に対してdij^(k)を計算するからFloyd-WarshallアルゴリズムではΘ(n^3)の領域が必要であるが、
  *         前回の履歴のみを必要とするので、すべての肩添字を落としただけの手続きも正しく、Θ(n^2)の領域で十分である
  *
- * @note   3重のfor分における操作はΟ(1)時間で実行できるから、このアルゴリズムの実行時間はΘ(n^3)である
+ * @note   3重のfor文における操作はΟ(1)時間で実行できるから、このアルゴリズムの実行時間はΘ(n^3)である
  *         このコードはタイトであって、複雑なデータ構造を含まず、Θ-記法に隠された定数は小さい
  *         したがって、Floyd-Warshallアルゴリズムは結構大きな入力グラフに対しても非常に実用的である
  *
@@ -93,12 +93,12 @@ matrix_t floyd_warshall(const matrix_t& W)
 {
     index_t n = W.size();  // n = W.rows
     matrix_t D(n, array_t(n, limits::inf));
-    for (index_t i = 0; i < n; i++) { std::copy(W[i].begin(), W[i].end(), D[i].begin()); D[i][i] = 0; }
+    for (index_t i = 0; i < n; ++i) { std::copy(W[i].begin(), W[i].end(), D[i].begin()); D[i][i] = 0; }
 
     
-    for (index_t k = 0; k < n; k++) {
-        for (index_t i = 0; i < n; i++) {
-            for (index_t j = 0; j < n; j++) {
+    for (index_t k = 0; k < n; ++k) {
+        for (index_t i = 0; i < n; ++i) {
+            for (index_t j = 0; j < n; ++j) {
                 // 任意の実数a != ∞に対して、a + ∞ = ∞ + a = ∞(また、a + (-∞) = (-∞) + a = (-∞))を仮定している
                 if (D[i][k] != limits::inf && D[k][j] != limits::inf) {
                     D[i][j] = std::min(D[i][j], D[i][k] + D[k][j]);

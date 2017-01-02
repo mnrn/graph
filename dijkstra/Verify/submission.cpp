@@ -133,7 +133,7 @@ static index_t extract_min(const vertices_t& V, index_t n)
 {
     index_t  u = limits::nil;
     weight_t d = limits::inf; 
-    for (index_t v = 0; v < n; v++) {
+    for (index_t v = 0; v < n; ++v) {
         if (!V[v].visited && V[v].d < d) { d = V[v].d; u = v; }
     }
     return u;

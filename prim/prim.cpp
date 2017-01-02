@@ -1,7 +1,7 @@
 /**
  * @brief  最小全域木問題(minimum-spanning tree problem)における
  *         Primのアルゴリズム(Prim's algorithm)の実装を行う
- * @date   2016/02/17 ~ 2016/03/13
+ * @date   2016/02/17 ~ 2017/01/03
  */
 
 
@@ -112,7 +112,7 @@ std::pair<vertices_t, weight_t> prim(const matrix_t& W, index_t r)
         // 最小全域木Aに属さないある孤立点(Aの辺と接続していない頂点)を連結する軽い辺を探す
         index_t u = extract_min(A, n);
         if (u == limits::nil) { break; }   // 頂点uがNILを指すならば、探索は終了であり、最小全域木Aは A = {(v, v.π) : v ∈ V - { r } }である
-        for (index_t v = 0; v < n; v++) {  // 頂点uの隣接行列の走査を行う
+        for (index_t v = 0; v < n; ++v) {  // 頂点uの隣接行列の走査を行う
             if (W[u][v] < A[v].key) {      // 白または、灰頂点に対しては、属性の更新確認を行う必要がある
                 A[v].pi  = u;              // vのπ属性と
                 A[v].key = W[u][v];        // key属性を更新する

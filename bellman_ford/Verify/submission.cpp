@@ -1,7 +1,7 @@
 /**
  * @brief  最短経路問題(shortest paths problem)におけるBellman-Fordアルゴリズム(Bellman-Ford algorithm)を扱う
  * @note   関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B
- * @date   2016/02/18
+ * @date   2016/02/18~2017/01/03
  */
 
 
@@ -197,7 +197,7 @@ std::pair<bool, vertices_t> bellman_ford(const graph_t& G, index_t s)
     
     initialize_single_source(V, s);  // すべての頂点のd値とπ値を初期化する
     // アルゴリズムはグラフのすべての辺を|V| - 1回走査する
-    for (index_t i = 0; i < n - 1; i++) {
+    for (index_t i = 0; i < n - 1; ++i) {
         for (auto&& es : G) { for (auto&& e : es) {
                 relax(V, e, relax_pred);  // グラフの各辺をそれぞれ1回緩和する
             }

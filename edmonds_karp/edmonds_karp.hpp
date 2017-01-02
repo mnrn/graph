@@ -1,6 +1,6 @@
 /**
  * @brief  最大フローを求めるEdmondsKarpアルゴリズムを扱う
- * @date   2016/03/03 ~ 2016/03/28
+ * @date   2016/03/03 ~ 2017/01/03
  */
 
 
@@ -54,7 +54,7 @@ struct edmonds_karp {
     explicit edmonds_karp(const graph_t& G)
     {
         *this = edmonds_karp(G.size());
-        for (index_t i = 0; i < n; i++) { for (auto&& e : G[i]) { add_edge(e.src, e.dst, e.c); } }
+        for (index_t i = 0; i < n; ++i) { for (auto&& e : G[i]) { add_edge(e.src, e.dst, e.c); } }
     }
 
     /**

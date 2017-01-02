@@ -1,7 +1,7 @@
 /**
  * @brief  最大フローを求めるEdmondsKarpアルゴリズムを扱う
  * @note   関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_6_A
- * @date   2016/03/03
+ * @date   2016/03/03~2017/01/03
  */
 
 
@@ -135,7 +135,7 @@ struct edmonds_karp {
     explicit edmonds_karp(const graph_t& G)
     {
         *this = edmonds_karp(G.size());
-        for (index_t i = 0; i < n; i++) { for (auto&& e : G[i]) { add_edge(e.src, e.dst, e.c); } }
+        for (index_t i = 0; i < n; ++i) { for (auto&& e : G[i]) { add_edge(e.src, e.dst, e.c); } }
     }
 
     /**
