@@ -12,9 +12,9 @@
 
 #include <queue>
 #include <iostream>
-#include "../Graph/greedy.hpp"
-#include "../Graph/relax.hpp"
-#include "Dijkstra.hpp"
+#include "../graph/greedy.hpp"
+#include "../graph/relax.hpp"
+#include "dijkstra.hpp"
 
 
 

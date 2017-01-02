@@ -12,7 +12,7 @@
 
 #include <iostream>
 #include <queue>
-#include "../Graph/greedy.hpp"
+#include "../graph/greedy.hpp"
 #include "prim.hpp"
 
 

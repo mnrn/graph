@@ -10,7 +10,7 @@
 //****************************************
 
 #include <iostream>
-#include "../Graph/relax.hpp"
+#include "../graph/relax.hpp"
 #include "bellman_ford.hpp"
 
 

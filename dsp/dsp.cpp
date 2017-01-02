@@ -10,7 +10,7 @@
 //****************************************
 
 #include <iostream>
-#include "../TopologicalSort/tsort.hpp"
+#include "../topological_sort/tsort.hpp"
 #include "dsp.hpp"
 
 

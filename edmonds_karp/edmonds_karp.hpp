@@ -18,7 +18,7 @@
 // 必要なヘッダファイルのインクルード
 //****************************************
 
-#include "../Graph/graph.hpp"
+#include "../graph/graph.hpp"
 #include <queue>
 
 

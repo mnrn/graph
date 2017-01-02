@@ -11,7 +11,7 @@
 //****************************************
 
 #include "kruskal.hpp"
-#include "./DisjointSet/disjoint_set.hpp"
+#include "./disjoint_set/disjoint_set.hpp"
 #include <iostream>
 
 
