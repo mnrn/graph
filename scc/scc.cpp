@@ -1,6 +1,6 @@
 /**
  * @brief 強連結成分(分解)アルゴリズムの実装
- * @date  2016/02/14 ~ 2016/03/12
+ * @date  2016/02/14 ~ 2017/01/03
  */
 
 
@@ -8,8 +8,8 @@
 // 必要なヘッダファイルのインクルード
 //****************************************
 
-#include "../Graph/graph.hpp"
-#include "../Topologicalsort/tsort.hpp"
+#include "../graph/graph.hpp"
+#include "../topological_sort/tsort.hpp"
 #include <iostream>
 
 
@@ -61,7 +61,7 @@ indices_t scc(const graph_t& G)
     std::function<void(index_t, index_t)> dfs_visit = [&](index_t u, index_t k) {
         color[u] = vcolor::gray;
         components[u] = k;
-        for (auto& e : GT[u]) {
+        for (auto&& e : GT[u]) {
             index_t w = e.dst;
             if (color[w] == vcolor::white) {
                 dfs_visit(w, k);
@@ -75,15 +75,15 @@ indices_t scc(const graph_t& G)
     array_t tlst = tsort(G);
 
     // G^Tを計算する
-    for (auto& es : G) {
-        for (auto& e : es) {
+    for (auto&& es : G) {
+        for (auto&& e : es) {
             GT[e.dst].emplace_back(e.dst, e.src);
         }
     }
 
     // DFS(G^T)を呼び出す
     index_t k = 0;
-    for (auto u : tlst) { // 成分グラフの頂点をトポロジカルソートされた順序で訪問する
+    for (auto&& u : tlst) { // 成分グラフの頂点をトポロジカルソートされた順序で訪問する
         if (color[u] == vcolor::white) {
             dfs_visit(u, k++);
         }

@@ -55,7 +55,7 @@ array_t tsort(const graph_t& G)
     // 白節点を訪れる
     std::function<bool(index_t)> dfs_visit = [&](index_t u) {
         color[u] = vcolor::gray;    // uを灰に彩色する
-        for (auto& e : G[u]) {      // vと隣接する各頂点wを調べ、
+        for (auto&& e : G[u]) {     // vと隣接する各頂点wを調べ、
             index_t w = e.dst;
             if (color[w] == vcolor::white
              && !dfs_visit(w)) { return false; }  // wが白なら再帰的にwを調べる

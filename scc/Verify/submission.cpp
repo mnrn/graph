@@ -1,6 +1,7 @@
 /**
  * @brief 強連結(分解)アルゴリズムのテスト
- * @date  2016/03/12
+ * @date  2016/03/12~2017/01/03
+ * @note  関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_D
  */
 
 
@@ -135,7 +136,7 @@ array_t tsort(const graph_t& G)
     // 白節点を訪れる
     std::function<bool(index_t)> dfs_visit = [&](index_t u) {
         color[u] = vcolor::gray;    // uを灰に彩色する
-        for (auto& e : G[u]) {      // vと隣接する各頂点wを調べ、
+        for (auto&& e : G[u]) {      // vと隣接する各頂点wを調べ、
             index_t w = e.dst;
             if (color[w] == vcolor::white
              && !dfs_visit(w)) { return false; }  // wが白なら再帰的にwを調べる
@@ -178,12 +179,12 @@ array_t tsort(const graph_t& G)
  *         3 DFS(G^T)を呼び出すが、DFSの主ループでは(第1行で計算した)u.fの降順で頂点を探索する
  *         4 第3行で生成した深さ優先森の各木の頂点を、それぞれ分離された強連結成分として出力する
  *
- * @param  const graph& G グラフG
+ * @param  const graph_t& G グラフG
  * @return components[v] 頂点vが含まれる連結成分の番号となるような集合
  */
 indices_t scc(const graph_t& G)
 {
-    std::int32_t n = G.size(); vertices_t vs(n);
+    index_t n = G.size(); vertices_t vs(n);
     indices_t components(n, -1);
     std::vector<vcolor> color(n, vcolor::white);
     graph_t GT(n);
@@ -192,7 +193,7 @@ indices_t scc(const graph_t& G)
     std::function<void(index_t, index_t)> dfs_visit = [&](index_t u, index_t k) {
         color[u] = vcolor::gray;
         components[u] = k;
-        for (auto& e : GT[u]) {
+        for (auto&& e : GT[u]) {
             index_t w = e.dst;
             if (color[w] == vcolor::white) {
                 dfs_visit(w, k);
@@ -206,15 +207,15 @@ indices_t scc(const graph_t& G)
     array_t tlst = tsort(G);
 
     // G^Tを計算する
-    for (auto& es : G) {
-        for (auto& e : es) {
+    for (auto&& es : G) {
+        for (auto&& e : es) {
             GT[e.dst].emplace_back(e.dst, e.src);
         }
     }
 
     // DFS(G^T)を呼び出す
     index_t k = 0;
-    for (auto u : tlst) { // 成分グラフの頂点をトポロジカルソートされた順序で訪問する
+    for (auto&& u : tlst) { // 成分グラフの頂点をトポロジカルソートされた順序で訪問する
         if (color[u] == vcolor::white) {
             dfs_visit(u, k++);
         }
