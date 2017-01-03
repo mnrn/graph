@@ -24,8 +24,8 @@ And open source with a [public repository][mnrn] on GitHub.
 ### Demo
 
 [AOJ][AOJ]でアルゴリズムの動作確認をしました。 
- 
-各ディレクトリに存在するVerifyディレクトリに存在するsubmission.cppに確認した問題のURLが貼ってあります。
+
+各ディレクトリに存在するVerify内のsubmission.cppに確認した問題のURLが貼ってあります。
 
 
 ### Reference
