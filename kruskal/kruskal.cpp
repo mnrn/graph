@@ -54,7 +54,7 @@ std::pair<edges_t, weight_t> kruskal(const graph_t& G)
 
     
     weight_t w = 0; edges_t A;             // Aを空集合に初期化し、
-    for (index_t v = 0; v < n; v++) {      // 各頂点がそれぞれ1つの木である|V|本の木を生成する
+    for (index_t v = 0; v < n; ++v) {      // 各頂点がそれぞれ1つの木である|V|本の木を生成する
         ds.make_set(v);
     }
     std::sort(E.begin(), E.end(), cmp());  // 重みwの非減少順でG.Eの辺をソートする
