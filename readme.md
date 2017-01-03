@@ -1,8 +1,10 @@
 # Graph Algorithm Library
 
 ## Overview
-この業界に入る直前の期間に書いたグラフアルゴリズムプログラム集です。 
-完全に学習用に書いたものなのでわりと独善的なコメントが目立ちます。 
+この業界に入る直前の期間に書いたグラフアルゴリズムプログラム集です。
+
+完全に学習用に書いたものなのでわりと独善的なコメントが目立ちます。
+
 ちょくちょく保守しています。
 
 
@@ -22,13 +24,14 @@ And open source with a [public repository][mnrn] on GitHub.
 ### Demo
 
 [AOJ][AOJ]でアルゴリズムの動作確認をしました。 
+ 
 各ディレクトリに存在するVerifyディレクトリに存在するsubmission.cppに確認した問題のURLが貼ってあります。
 
 
 ### Reference
 
 以下のサイトをかなり参考にしました。
-- [spaghetti source][spagetti source]
+- [spaghetti source][spaghetti source]
 - [libalgo][libalgo]
 
 基本的に[アルゴリズムイントロダクション][CLRS]の内容に沿ってプログラムを記述しています。
