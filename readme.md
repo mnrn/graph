@@ -19,7 +19,7 @@
 * 最大フロー問題(Ford-Fulkerson法、Edmonds-Kerp法)
 
 
-And open source with a [public repository][mnrn_] on GitHub.
+And open source with a [public repository][mnrn] on GitHub.
 
 ### Demo
 
@@ -40,7 +40,7 @@ And open source with a [public repository][mnrn_] on GitHub.
 License
 ----
 
-Copyright [[mnrn]]
+Copyright mnrn
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@ limitations under the License.
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
 
-   [mnrn_]: <https://github.com/mnrn/graph>
+   [mnrn]: <https://github.com/mnrn/graph>
    
    [spaghetti source]: <http://www.prefield.com/algorithm/>
    [libalgo]:<http://tubo28.me/algorithm/>
