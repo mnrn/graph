@@ -1,40 +1,39 @@
 # Graph Algorithm Library
 
 ## Overview
-この業界に入る直前の期間に書いたグラフアルゴリズムプログラム集です。
+It is a graph algorithm program collection written in the period just before entering this industry.
 
-完全に学習用に書いたものなのでわりと独善的なコメントが目立ちます。
+Because it is written perfectly for learning, self-righteous comments are conspicuous.
 
-ちょくちょく保守しています。
+I keep it regularly.
 
 
 ### Description
 
-以下のアルゴリズムを扱っています。
+I handle the following algorithm.
 
-* 基本グラフアルゴリズム(幅優先探索、深さ優先探索、トポロジカルソート、強連結成分)
-* 最小全域木問題(KruskalとPrimのアルゴリズム)
-* 単一始点最短路問題(Bellman-Ford法、Dijkstra法)
-* 全点対最短路問題(Floyd-Warshall法)
-* 最大フロー問題(Ford-Fulkerson法、Edmonds-Kerp法)
+* Elementary Graph Algorithms(Breadth-first-search, Depth-first-search, Topological sort, Strongly connected components)
+* Minimun Spanning Trees(The algorithms of Kruskal and Prim)
+* Single-Source Shortest Path(The Bellman-Ford algorithm、Dijkstra's algorithm)
+* All-Pairs Shortest Paths(The Floyd-Warshall algorithm)
+* Maxinum Flow(The Ford-Fulkerson method、The Edmonds-Kerp algoerithm)
 
 
 And open source with a [public repository][mnrn] on GitHub.
 
 ### Demo
 
-[AOJ][AOJ]でアルゴリズムの動作確認をしました。 
+I checked the operation of the algorithm with [AOJ] [AOJ]. 
 
-各ディレクトリに存在するVerify内のsubmission.cppに確認した問題のURLが貼ってあります。
-
+The URL of the problem confirmed in submission.cpp in Verify existing in each directory is stuck.
 
 ### Reference
 
-以下のサイトをかなり参考にしました。
+I used the following site as a reference.
 - [spaghetti source][spaghetti source]
 - [libalgo][libalgo]
 
-基本的に[アルゴリズムイントロダクション][CLRS]の内容に沿ってプログラムを記述しています。
+Basically, I describe the program according to the contents of [Introduction to Algorithms] [CLRS].
 
 
 License
@@ -56,5 +55,5 @@ CC0 — “No Rights Reserved”
 
    [AOJ]: <http://judge.u-aizu.ac.jp/onlinejudge/>
 
-   [CLRS]: <https://www.amazon.co.jp/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0%E3%82%A4%E3%83%B3%E3%83%88%E3%83%AD%E3%83%80%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC3%E7%89%88-%E7%B7%8F%E5%90%88%E7%89%88-%E4%B8%96%E7%95%8C%E6%A8%99%E6%BA%96MIT%E6%95%99%E7%A7%91%E6%9B%B8-%E3%82%B3%E3%83%AB%E3%83%A1%E3%83%B3/dp/476490408X>
+   [CLRS]: <https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844>
 
