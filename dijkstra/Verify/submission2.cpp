@@ -137,7 +137,7 @@ struct state {
 /**
  * @brief  Θ(V)の手続きによって最短路推定値と先行点および頂点色を初期化する
  * @note   初期化の後、すべてのv ∈ Vについてv.π = NIL、
- *         すべてのv ∈ V - {s}についてv.d = ∞、 v.color = WHITEである　
+ *         すべてのv ∈ V - {s}についてv.d = ∞、 v.color = WHITEである
  */
 static inline void initialize_single_source_with_color(vertices_t& V, index_t s)
 {
@@ -193,7 +193,6 @@ vertices_t dijkstra(const graph_t& G, index_t s)
     vertices_t S(n);
     std::priority_queue<state> Q;
 
-    
     initialize_single_source_with_color(S, s);     // すべての頂点のd値とπ値を初期化する
     Q.emplace(s, S[s].d);                          // このループの最初の実行ではu = sである
     while (!Q.empty()) {
