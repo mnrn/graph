@@ -9,8 +9,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __SCC_HPP__
-#define __SCC_HPP__
+#ifndef SCC_HPP
+#define SCC_HPP
 
 
 
@@ -70,7 +70,4 @@ GRAPH_END
 
 
 
-#endif  // end of __SCC_HPP__
-
-
-
+#endif  // end of SCC_HPP

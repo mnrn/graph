@@ -10,8 +10,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __DISJOINT_SET_HPP__
-#define __DISJOINT_SET_HPP__
+#ifndef DISJOINT_SET_HPP
+#define DISJOINT_SET_HPP
 
 
 
@@ -32,15 +32,15 @@
 struct disjoint_set {
     using index_t = std::int32_t;
     using rank_t  = std::int32_t;
-    
+
     std::vector<index_t> p;
     std::vector<rank_t> rank;
 
     explicit disjoint_set(std::size_t size) : p(size, -1), rank(size, -1) {}
-    
+
     /**
      * @brief xを唯一の要素(従って、代表元)としてもつ新しい集合を生成する.
-     * @note  集合は互いに素であるから、xがすでに別の集合に出現していることはない. 
+     * @note  集合は互いに素であるから、xがすでに別の集合に出現していることはない.
      *
      * @param int x 節点x
      */
@@ -73,9 +73,9 @@ struct disjoint_set {
         if (rank[x] > rank[y]) {  // x.rank > y.rankならば、
             p[y] = x;             // yの親はxを指す
         }
-        else {                    // x.rank <= y.rankならば、 
+        else {                    // x.rank <= y.rankならば、
             p[x] = y;             // xの親はyを指す
-            
+
             if (rank[x] == rank[y]) {   // x.rank == y.rankならば、
                 rank[y] = rank[y] + 1;  // y.rankをひとつ増やす
             }
@@ -103,5 +103,4 @@ struct disjoint_set {
 
 
 
-#endif  // end of __DISJOINT_SET_H__
-
+#endif  // end of DISJOINT_SET_H

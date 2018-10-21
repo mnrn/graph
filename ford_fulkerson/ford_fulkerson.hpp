@@ -33,8 +33,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __FORD_FULKERSON_HPP__
-#define __FORD_FULKERSON_HPP__
+#ifndef FORD_FULKERSON_HPP
+#define FORD_FULKERSON_HPP
 
 
 
@@ -131,7 +131,7 @@ struct ford_fulkerson {
         capacity_t flow = 0;    // execute終了時にsからtへの最大フローとなる値
 
         // NOTE : コンストラクタ呼び出し時にFORD-FULKERSONの第1~3行の初期化と同様の操作は終了している
-        
+
         // NOTE : 増加可能経路pをDFSで辿りつつ、FORD-FULKERSONの第5~8行を実行する
         while (dfs(s, t)) {
             flow += augment;
@@ -151,14 +151,14 @@ struct ford_fulkerson {
     {
         visited[u] = true;           // 訪問印を刻む
         if(u == t) { return flow; }  // 出口(sink)tに達した場合、再帰は底をつく
-        
+
         for(auto&& v : Gf[u]) {  // 各頂点v ∈ Adj[u]を吟味するので、深さ優先探索は辺(u, v)を探索する(explore)という
             // vが白ではない、または残余容量がゼロならば辺(u, v)を調べる必要はない
             if(visited[v] || cf(u, v) == 0) { continue; }
-            
+
             // 再帰的にDFS-VISITを呼び出し、残余容量cf(p)を得る
             capacity_t cf_p = dfs_visit(v, t, std::min(flow, cf(u, v)));
-            
+
             if (cf_p > 0) {  // cf(p)がゼロでないならば、
                 f[u][v] += cf_p;  // 元のネットワークの辺のフローを加え、
                 f[v][u] -= cf_p;  // 逆向き辺のフローを引く
@@ -199,5 +199,4 @@ GRAPH_END
 
 
 
-#endif  // end of __FORD_FULKERSON_HPP__
-
+#endif  // end of FORD_FULKERSON_HPP

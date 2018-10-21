@@ -9,8 +9,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __BFS_HPP__
-#define __BFS_HPP__
+#ifndef BFS_HPP
+#define BFS_HPP
 
 
 
@@ -81,5 +81,4 @@ GRAPH_END
 
 
 
-#endif  // end of __BFS_HPP__
-
+#endif  // end of BFS_HPP

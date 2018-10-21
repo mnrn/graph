@@ -38,7 +38,7 @@ enum struct color : std::int32_t {
 };
 
 /**
- * @brief グラフ用ノード(頂点) 
+ * @brief グラフ用ノード(頂点)
  */
 struct vertex {
     // index_t index;        /**< 頂点の添字      */
@@ -120,9 +120,6 @@ namespace graph {  // グラフ用名前空間...そのうちこのファイル�
  */
 std::tuple<bool, indices_t, array_t> bellmanford(const graph_t& G, index_t s)
 {
-#define _foreachbegin(GE, e) for (auto& es : GE) { for (auto& e : es) {
-#define _foreachend } }
-    
     std::int32_t n = G.size();
     indices_t pi(n); array_t d(n);
     bool neg = false;
@@ -139,7 +136,7 @@ std::tuple<bool, indices_t, array_t> bellmanford(const graph_t& G, index_t s)
         if (d[u] != graph::inf && d[v] > d[u] + e.w) { d[v] = d[u] + e.w; pi[v] = u; if (i == n - 1) { neg = true; }}
     };
 
-    
+
     initsinglesource(pi, d, s, n);  // すべての頂点のd値とπ値を初期化する
     // アルゴリズムはグラフのすべての辺を|V| - 1回走査する(ただし、sから到達不可能な負の閉路がない場合に限る)
     for (std::int32_t i = 0; i < n; i++) {
@@ -149,9 +146,6 @@ std::tuple<bool, indices_t, array_t> bellmanford(const graph_t& G, index_t s)
         }
     }
     return std::make_tuple(!neg, pi, d);
-
-#undef _foreachbegin
-#undef _foreachend
 }
 
 
@@ -160,7 +154,7 @@ int main(void)
 {
     using namespace std;
     int V, E, r;
-    
+
     while (cin >> V >> E >> r) {
         graph_t G(V);
         for (int i = 0; i < E; i++) {

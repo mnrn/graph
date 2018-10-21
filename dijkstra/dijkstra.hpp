@@ -9,8 +9,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __DIJKSTRA_HPP__
-#define __DIJKSTRA_HPP__
+#ifndef DIJKSTRA_HPP
+#define DIJKSTRA_HPP
 
 
 
@@ -75,5 +75,4 @@ GRAPH_END
 
 
 
-#endif  // end of __DIJKSTRA_HPP__
-
+#endif  // end of DIJKSTRA_HPP

@@ -9,8 +9,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __TSORT_HPP__
-#define __TSORT_HPP__
+#ifndef TSORT_HPP
+#define TSORT_HPP
 
 
 
@@ -66,14 +66,4 @@ GRAPH_END
 
 
 
-#endif  // end of __TSORT_HPP__
-
-
-
-
-
-
-
-
-
-
+#endif  // end of TSORT_HPP

@@ -10,8 +10,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __PRIM_HPP__
-#define __PRIM_HPP__
+#ifndef PRIM_HPP
+#define PRIM_HPP
 
 
 
@@ -46,7 +46,7 @@ GRAPH_BEGIN
  *
  * @note   優先度付きキューの優先度更新を行わないため、優先度付きキューが空になるまで行われる挿入の回数はΟ(E)であるが、
  *         EXTRACT-MIN呼び出し時に、黒頂点であれば無視をすることで、全体としての実行時間をΟ(ElgV)としている
- * 
+ *
  * @param  const graph_t& G グラフG
  * @param  index_t        r 最小全域木の根
  */
@@ -64,7 +64,7 @@ std::pair<edges_t, weight_t> prim(const graph_t& G, index_t r = 0);
  *         各ステップでは木の重みの増加を限りなく小さく抑える辺を用いて木を成長させるので、これは貪欲戦略である
  *
  * @note   グラフG = (V, E)が隣接行列によって与えられたとき、Ο(V^2)で走るPrimのアルゴリズムは簡単に実現できる
- * 
+ *
  * @param  const matrix_t& M 隣接行列M
  * @param  index_t         r 最小全域木の根
  */
@@ -80,4 +80,4 @@ GRAPH_END
 
 
 
-#endif  // end of __PRIM_HPP__
+#endif  // end of PRIM_HPP

@@ -9,8 +9,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __DSP_HPP__
-#define __DSP_HPP__
+#ifndef DSP_HPP
+#define DSP_HPP
 
 
 
@@ -60,5 +60,4 @@ GRAPH_END
 
 
 
-#endif  // __DSP_HPP__
-
+#endif  // DSP_HPPS

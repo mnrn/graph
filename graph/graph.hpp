@@ -54,8 +54,8 @@
 // インクルードガード
 //********************************************************************************
 
- #ifndef __GRAPH_HPP__
- #define __GRAPH_HPP__
+ #ifndef GRAPH_HPP
+ #define GRAPH_HPP
 
 
 
@@ -112,7 +112,7 @@ enum struct vcolor : std::int32_t {
 };
 
 /**
- * @brief グラフ用ノード(頂点) 
+ * @brief グラフ用ノード(頂点)
  */
 struct vertex {
     union {
@@ -178,5 +178,4 @@ GRAPH_END
 
 
 
-#endif  // end of __GRAPH_HPP__
-
+#endif  // end of GRAPH_HPP

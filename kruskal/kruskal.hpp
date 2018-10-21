@@ -10,8 +10,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __KRUSKAL_HPP__
-#define __KRUSKAL_HPP__
+#ifndef KRUSKAL_HPP
+#define KRUSKAL_HPP
 
 
 
@@ -43,7 +43,7 @@ GRAPH_BEGIN
  *
  * @note   Kruskalのアルゴリズムでは、成長させる森に付け加える安全な辺は、森に属する2つの木を連結するすべての辺の中で、重みが最小の辺(u, v)である
  *         (u, v)が連結する2つの木をC1およびC2とする. (u, v)はC1を別の木と連結する軽い辺だから、(u, v)はこの森に対して安全な辺である
- *         各ステップで重みが可能な限り小さい辺を森に加えているから、Kruskalのアルゴリズムは貪欲アルゴリズムである         
+ *         各ステップで重みが可能な限り小さい辺を森に加えているから、Kruskalのアルゴリズムは貪欲アルゴリズムである
  *
  * @note   Kruskalのアルゴリズムの総実行時間はΟ(ElgV)である
  *
@@ -62,5 +62,4 @@ GRAPH_END
 
 
 
-#endif  // end of __KRUSKAL_HPP__
-
+#endif  // end of KRUSKAL_HPP

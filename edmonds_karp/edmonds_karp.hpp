@@ -9,8 +9,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __EDMONDS_KARP_HPP__
-#define __EDMONDS_KARP_HPP__
+#ifndef EDMONDS_KARP_HPP
+#define EDMONDS_KARP_HPP
 
 
 
@@ -92,7 +92,7 @@ struct edmonds_karp {
         capacity_t flow = 0;  // execute終了時にsからtへの最大フローとなる値
 
         // NOTE: コンストラクタ呼び出し時にFORD-FULKERSONの第1~3行の初期化と同様の操作は終了している
-        
+
         while (bfs(s, t)) { flow += proc(s, t); }  // BFSでpを探し、pが存在したならば、フローを更新する
         return flow;
     }
@@ -113,14 +113,14 @@ struct edmonds_karp {
         // 手続き開始と同時に始点sを発見したと考え、
         pi[s] = limits::nil;  // 始点の先行点をNILで初期化する
         visited[s] = true;    // 訪問印を刻む
-        
+
         Q.push(s);  // sだけを含むようにキューを初期化する
         while (!Q.empty()) {
             index_t u = Q.front(); Q.pop();
             for (auto&& v : Gf[u]) {
                 // vが白でない、または残余容量がゼロならば、辺(u, v)を調べる必要がない
                 if (visited[v] || cf(u, v) == 0) { continue; }
-                
+
                 // 上記の条件にいずれも当てはまらない場合、
                 visited[v] = true;  // 訪問印を刻み、
                 pi[v] = u;          // uをその親v.piとして記録し、
@@ -155,7 +155,7 @@ struct edmonds_karp {
             f[v][pi[v]] -= cf_p;  // 逆向き辺(後方辺)のフローを引く
             v = pi[v];
         }
-        
+
         return cf_p;
     }
 
@@ -176,5 +176,4 @@ GRAPH_END
 
 
 
-#endif  // end of __EDMONDS_KARP_HPP__
-
+#endif  // end of EDMONDS_KARP_HPP

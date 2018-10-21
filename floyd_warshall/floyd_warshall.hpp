@@ -24,7 +24,7 @@
  *         隣接行列に関していくつか約束をする. 最初に、入力グラフG = (V, E)はn個の頂点を持つ. したがって、n = |V|である
  *         第2に、行列を表すのに、W、L、Dのように大文字を用い、ここの要素はwij, lij, dijのように小文字に添字をつけて表す
  *         また、ある行列では、L^(m) = (lij^(m))やD^(m) = (dij^(m))のように、反復回数を表すのに肩に括弧付きの添字を用いることがある
- *         最後に、n x nの行列Aに対して、nの値は属性A.rowsに格納されている 
+ *         最後に、n x nの行列Aに対して、nの値は属性A.rowsに格納されている
  *
  * @date   2016/02/21 ~ 2016/03/12
  */
@@ -35,8 +35,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __FLOYD_WARSHALL_HPP__
-#define __FLOYD_WARSHALL_HPP__
+#ifndef FLOYD_WARSHALL_HPP
+#define FLOYD_WARSHALL_HPP
 
 
 
@@ -109,5 +109,4 @@ GRAPH_END
 
 
 
-#endif  // end of __FLOYD_WARSHALL_HPP__
-
+#endif  // end of FLOYD_WARSHALL_HPP

@@ -9,8 +9,8 @@
 // インクルードガード
 //****************************************
 
-#ifndef __BELLMAN_FORD_HPP__
-#define __BELLMAN_FORD_HPP__
+#ifndef BELLMAN_FORD_HPP
+#define BELLMAN_FORD_HPP
 
 
 
@@ -51,5 +51,4 @@ GRAPH_END
 
 
 
-#endif  // end of __BELLMANFORD_HPP__
-
+#endif  // end of BELLMANFORD_HPP
