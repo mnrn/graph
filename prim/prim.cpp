@@ -1,7 +1,7 @@
 /**
  * @brief  最小全域木問題(minimum-spanning tree problem)における
  *         Primのアルゴリズム(Prim's algorithm)の実装を行う
- * @date   2016/02/17 ~ 2017/01/03
+ * @date   2016/02/17 ~ 2018/11/09
  */
 
 
