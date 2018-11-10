@@ -57,18 +57,23 @@ array_t tsort(const graph_t& G)
         color[u] = vcolor::gray;    // uを灰に彩色する
         for (auto&& e : G[u]) {     // vと隣接する各頂点wを調べ、
             index_t w = e.dst;
-            if (color[w] == vcolor::white
-             && !dfs_visit(w)) { return false; }  // wが白なら再帰的にwを調べる
+
+            // wが白なら再帰的にwを調べる
+            if (color[w] == vcolor::white && !dfs_visit(w)) {
+                 return false;
+            }
         }
         color[u] = vcolor::black;   // uを黒に彩色する
-        lst.push_back(u);           // リストの末尾に挿入する
+        lst.emplace_back(u);        // リストの末尾に挿入する
         return true;
     };
 
 
     // 各頂点vの終了時刻v.fを計算するためにDFS(G)を呼び出す
     for (index_t v = 0; v < n; ++v) {
-        if (color[v] == vcolor::white && !dfs_visit(v)) { return {}; };
+        if (color[v] == vcolor::white && !dfs_visit(v)) {
+            return { };
+        };
     }
     reverse(lst.begin(), lst.end());  // リストが逆順にソートされているのでreverseを行う
     return lst;     // 頂点のリストを返す
@@ -81,4 +86,3 @@ array_t tsort(const graph_t& G)
 //****************************************
 
 GRAPH_END
-

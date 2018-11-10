@@ -2,7 +2,7 @@
 
 ## Overview
 There is a graph algorithm program collection written in C++.  
-It is written perfectly for learning, self-righteous comments are conspicuous.
+**It is written for learning, self-righteous comments are conspicuous.**
 
 Update it regularly.
 
