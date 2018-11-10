@@ -1,7 +1,7 @@
 /**
  * @brief  全点対最短路問題におけるFloyd-Warshallアルゴリズムを扱う
  * @note   関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
- * @date   2016/02/21 ~ 2017/01/03
+ * @date   2016/02/21 ~ 2018/11/09
  */
 
 
@@ -67,7 +67,7 @@ enum struct vcolor : std::int32_t {
 };
 
 /**
- * @brief グラフ用ノード(頂点) 
+ * @brief グラフ用ノード(頂点)
  */
 struct vertex {
     union {
@@ -156,9 +156,12 @@ matrix_t floyd_warshall(const matrix_t& W)
 {
     index_t n = W.size();  // n = W.rows
     matrix_t D(n, array_t(n, limits::inf));
-    for (index_t i = 0; i < n; ++i) { std::copy(W[i].begin(), W[i].end(), D[i].begin()); D[i][i] = 0; }
 
-    
+    for (index_t i = 0; i < n; ++i) {
+        std::copy(W[i].begin(), W[i].end(), D[i].begin());
+        D[i][i] = 0;
+    }
+
     for (index_t k = 0; k < n; ++k) {
         for (index_t i = 0; i < n; ++i) {
             for (index_t j = 0; j < n; ++j) {
@@ -191,7 +194,7 @@ int main(void)
 {
     using namespace std;
     using namespace graph;
-    
+
     int n, e, u, v, c;
     cin >> n >> e;
     matrix_t W(n, array_t(n, limits::inf));
@@ -220,7 +223,6 @@ int main(void)
             cout << endl;
         }
     }
-    
+
     return 0;
 }
-

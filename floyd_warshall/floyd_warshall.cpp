@@ -24,9 +24,9 @@
  *         隣接行列に関していくつか約束をする. 最初に、入力グラフG = (V, E)はn個の頂点を持つ. したがって、n = |V|である
  *         第2に、行列を表すのに、W、L、Dのように大文字を用い、ここの要素はwij, lij, dijのように小文字に添字をつけて表す
  *         また、ある行列では、L^(m) = (lij^(m))やD^(m) = (dij^(m))のように、反復回数を表すのに肩に括弧付きの添字を用いることがある
- *         最後に、n x nの行列Aに対して、nの値は属性A.rowsに格納されている 
+ *         最後に、n x nの行列Aに対して、nの値は属性A.rowsに格納されている
  *
- * @date   2016/02/21 ~ 2017/01/03
+ * @date   2016/02/21 ~ 2018/11/09
  */
 
 
@@ -93,9 +93,12 @@ matrix_t floyd_warshall(const matrix_t& W)
 {
     index_t n = W.size();  // n = W.rows
     matrix_t D(n, array_t(n, limits::inf));
-    for (index_t i = 0; i < n; ++i) { std::copy(W[i].begin(), W[i].end(), D[i].begin()); D[i][i] = 0; }
 
-    
+    for (index_t i = 0; i < n; ++i) {
+        std::copy(W[i].begin(), W[i].end(), D[i].begin());
+        D[i][i] = 0;
+    }
+
     for (index_t k = 0; k < n; ++k) {
         for (index_t i = 0; i < n; ++i) {
             for (index_t j = 0; j < n; ++j) {
@@ -116,7 +119,3 @@ matrix_t floyd_warshall(const matrix_t& W)
 //****************************************
 
 GRAPH_END
-
-
-
-
