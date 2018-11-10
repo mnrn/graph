@@ -1,6 +1,6 @@
 /**
  * @brief 強連結(分解)アルゴリズムのテスト
- * @date  2016/03/12~2017/01/03
+ * @date  2016/03/12~2018/11/09
  * @note  関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_11_D
  */
 
@@ -67,7 +67,7 @@ enum struct vcolor : std::int32_t {
 };
 
 /**
- * @brief グラフ用ノード(頂点) 
+ * @brief グラフ用ノード(頂点)
  */
 struct vertex {
     union {
@@ -138,35 +138,38 @@ using graph_t    = std::vector<edges_t>;   /**< グラフGの隣接リスト表�
  * @param  const graph_t& G 有向非巡回グラフ
  * @return 既ソートリスト
  */
-array_t tsort(const graph_t& G)
-{
-    index_t n = G.size();
-    std::vector<vcolor> color(n, vcolor::white);
-    array_t lst(n);
+ array_t tsort(const graph_t& G)
+ {
+     index_t n = G.size();
+     std::vector<vcolor> color(n, vcolor::white);
+     array_t lst(n);
 
-    // 白節点を訪れる
-    std::function<bool(index_t)> dfs_visit = [&](index_t u) {
-        color[u] = vcolor::gray;    // uを灰に彩色する
-        for (auto&& e : G[u]) {     // vと隣接する各頂点wを調べ、
-            index_t w = e.dst;
-            if (color[w] == vcolor::white
-             && !dfs_visit(w)) { return false; }  // wが白なら再帰的にwを調べる
-        }
-        color[u] = vcolor::black;   // uを黒に彩色する
-        lst.push_back(u);           // リストの末尾に挿入する
-        return true;
-    };
+     // 白節点を訪れる
+     std::function<bool(index_t)> dfs_visit = [&](index_t u) {
+         color[u] = vcolor::gray;    // uを灰に彩色する
+         for (auto&& e : G[u]) {     // vと隣接する各頂点wを調べ、
+             index_t w = e.dst;
 
-
-    // 各頂点vの終了時刻v.fを計算するためにDFS(G)を呼び出す
-    for (index_t v = 0; v < n; ++v) {
-        if (color[v] == vcolor::white && !dfs_visit(v)) { return {}; };
-    }
-    reverse(lst.begin(), lst.end());  // リストが逆順にソートされているのでreverseを行う
-    return lst;     // 頂点のリストを返す
-}
+             // wが白なら再帰的にwを調べる
+             if (color[w] == vcolor::white && !dfs_visit(w)) {
+                  return false;
+             }
+         }
+         color[u] = vcolor::black;   // uを黒に彩色する
+         lst.emplace_back(u);        // リストの末尾に挿入する
+         return true;
+     };
 
 
+     // 各頂点vの終了時刻v.fを計算するためにDFS(G)を呼び出す
+     for (index_t v = 0; v < n; ++v) {
+         if (color[v] == vcolor::white && !dfs_visit(v)) {
+             return { };
+         };
+     }
+     reverse(lst.begin(), lst.end());  // リストが逆順にソートされているのでreverseを行う
+     return lst;     // 頂点のリストを返す
+ }
 
 
 /**
@@ -254,7 +257,7 @@ int main()
 {
     using namespace std;
     using namespace graph;
-    
+
     graph_t G;
     int s, t, m, n, q;
     cin >> n >> m;
@@ -276,4 +279,3 @@ int main()
 
     return 0;
 }
-
