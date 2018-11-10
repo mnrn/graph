@@ -1,7 +1,7 @@
 # Graph Algorithm Library
 
 ## Overview
-There is a graph algorithm program collection written in C++.
+There is a graph algorithm program collection written in C++.  
 It is written perfectly for learning, self-righteous comments are conspicuous.
 
 Update it regularly.
@@ -22,7 +22,7 @@ And open source with a [public repository][mnrn] on GitHub.
 
 ### Demo
 
-I checked the algorithm with [AOJ][AOJ].
+I checked the algorithm with [AOJ][AOJ].  
 The URL of the problem confirmed in submission.cpp in Verify existing in each directory is stuck.
 
 ### Reference
