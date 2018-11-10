@@ -30,7 +30,9 @@ GRAPH_BEGIN
 //****************************************
 
 /**< @brief 優先度付きキューをmin優先度付きキューにするための < 演算子定義 */
-static bool operator < (const edge& e, const edge& f) { return e.w > f.w; }
+static bool operator < (const edge& e, const edge& f) {
+    return e.w > f.w;
+}
 
 
 
@@ -45,7 +47,7 @@ static bool operator < (const edge& e, const edge& f) { return e.w > f.w; }
  *
  * @note   優先度付きキューの優先度更新を行わないため、優先度付きキューが空になるまでに行われる挿入の回数はΟ(E)であるが、
  *         EXTRACT-MIN呼び出し時に、黒頂点であれば無視をすることで、全体としての実行時間をΟ(ElgV)としている
- * 
+ *
  * @param  const graph_t& G グラフG
  * @param  index_t        r 最小全域木の根
  */
@@ -53,26 +55,29 @@ std::pair<edges_t, weight_t> prim(const graph_t& G, index_t r)
 {
     index_t n = G.size();
     stamps_t visited(n);
-    edges_t A; weight_t w;
+    edges_t A;
+    weight_t w;
 
-    
     for (index_t u = 0; u < n; u++) {
         visited[u] = false;  // 各頂点を白色に初期化
     }
+
     std::priority_queue<edge> Q;
     Q.emplace(limits::nil, r, w = 0);       // 根rはキーを0に設定する
     while (!Q.empty()) {
         edge e = Q.top(); Q.pop();          // 軽い辺を取り出す
         index_t u = e.dst;
         if (visited[u]) { continue; }       // 取り出した辺が安全な辺ではない場合、再びループに戻り条件判定を行う
-        
+
         for (auto&& f : G[u]) {             // uと隣接し、木に属さない各頂点vの更新を行う
-            if (!visited[f.dst/*頂点v*/]) { Q.push(f); }
+            if (!visited[f.dst/*頂点v*/]) {
+                Q.push(f);
+            }
         }
         visited[u] = true;                  // 頂点uを黒色に彩色し、
         w += e.w;                           // 最小重みを更新する
         if (e.src != limits::nil) {  // アルゴリズムが終了したとき、min優先度付きキューは空であり、
-            A.emplace_back(e);       // Gに対する最小全域木AはA = { (v, v.π) : v ∈ V - { r } }である  
+            A.emplace_back(e);       // Gに対する最小全域木AはA = { (v, v.π) : v ∈ V - { r } }である
         }
     }
     return std::make_pair(A, w);
@@ -92,21 +97,22 @@ std::pair<edges_t, weight_t> prim(const graph_t& G, index_t r)
  *         属性v.πは木におけるvの親を示す
  *
  * @note   グラフG = (V, E)が隣接行列によって与えられたとき、Ο(V^2)で走るPrimのアルゴリズムは以下のように実現できる
- * 
+ *
  * @param  const matrix_t& W 隣接行列W
  * @param  index_t         r 最小全域木の根
  */
 std::pair<vertices_t, weight_t> prim(const matrix_t& W, index_t r)
 {
     index_t n = W.size();
-    vertices_t A(n); weight_t w;
+    vertices_t A(n);
+    weight_t w;
 
-    
     for (auto&& u : A) {
         u.key = limits::inf;  // 各頂点のキーを∞に設定する
         u.pi  = limits::nil;  // 各頂点の親をNILに設定する
         u.visited = false;
     }
+
     A[r].key = w = 0;         // 根rは例外で最初に処理されるようにキーの値を0に設定する
     while (true) {
         // 最小全域木Aに属さないある孤立点(Aの辺と接続していない頂点)を連結する軽い辺を探す
@@ -252,4 +258,3 @@ GRAPH_END
  *         第8行目のループの回数もΟ(E)であり、PRIM-MSTの総実行時間はΟ(ElgE)となることがわかる
  *         |E| < |V|^2に注意すると、PRIM-MSTの総実行時間をΟ(ElgV)と書き直すことができる
  */
-
