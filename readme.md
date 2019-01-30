@@ -1,11 +1,11 @@
 # Graph Algorithm Library
 
 ## Overview
+
 There is a graph algorithm program collection written in C++.  
 **It is written for learning, self-righteous comments are conspicuous.**
 
 Update it regularly.
-
 
 ### Description
 
@@ -28,13 +28,13 @@ The URL of the problem confirmed in submission.cpp in Verify existing in each di
 ### Reference
 
 Following site as a reference.
-- [spaghetti source][spaghetti source]
-- [libalgo][libalgo]
+
+* [spaghetti source][spaghetti source]
+* [libalgo][libalgo]
 
 Basically, I describe the program according to the contents of [Introduction to Algorithms][CLRS].
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
 
 [mnrn]: <https://github.com/mnrn/graph>
 
