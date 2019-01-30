@@ -11,7 +11,7 @@
 //****************************************
 
 #include "kruskal.hpp"
-#include "./disjoint_set/disjoint_set.hpp"
+#include "./disjoint_sets/disjoint_sets.hpp"
 #include <iostream>
 
 
@@ -45,14 +45,12 @@ GRAPH_BEGIN
  */
 std::pair<edges_t, weight_t> kruskal(const graph_t& G)
 {
-    index_t n = G.size();
-    disjoint_set ds(static_cast<std::size_t>(n));  // 互いな素な集合族のためのデータ構造を準備
+    const index_t n = G.size();
+    disjoint_sets ds(static_cast<std::size_t>(n));  // 互いな素な集合族のためのデータ構造を準備
     struct cmp { bool operator()(const edge& e, const edge& f) { return e.w < f.w; } };
     edges_t E;  // グラフGから集合G.Eを取り出す
     for (auto&& es : G) { for (auto&& e : es) { E.push_back(e); } }
 
-
-    
     weight_t w = 0; edges_t A;             // Aを空集合に初期化し、
     for (index_t v = 0; v < n; ++v) {      // 各頂点がそれぞれ1つの木である|V|本の木を生成する
         ds.make_set(v);

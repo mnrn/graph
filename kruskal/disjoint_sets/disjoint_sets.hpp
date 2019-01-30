@@ -1,8 +1,17 @@
 /**
  * @brief 素集合森構造体
- * @note  関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_1_A
- * @date  2016/04/16
+ * @date  作成日     : 2016/01/25
+ * @date  最終更新日 : 2016/01/25
  */
+
+
+
+//****************************************
+// インクルードガード
+//****************************************
+
+#ifndef DISJOINT_SETS_HPP
+#define DISJOINT_SETS_HPP
 
 
 
@@ -10,7 +19,6 @@
 // 必要なヘッダファイルのインクルード
 //****************************************
 
-#include <iostream>
 #include <vector>
 #include <cstdint>
 
@@ -21,18 +29,18 @@
 //****************************************
 
 /**< @brief 素集合森 */
-struct disjoint_set {
+struct disjoint_sets {
     using index_t = std::int32_t;
     using rank_t  = std::int32_t;
-    
+
     std::vector<index_t> p;
     std::vector<rank_t> rank;
 
-    explicit disjoint_set(std::size_t size) : p(size, -1), rank(size, -1) {}
-    
+    explicit disjoint_sets(std::size_t size) : p(size, -1), rank(size, -1) {}
+
     /**
      * @brief xを唯一の要素(従って、代表元)としてもつ新しい集合を生成する.
-     * @note  集合は互いに素であるから、xがすでに別の集合に出現していることはない. 
+     * @note  集合は互いに素であるから、xがすでに別の集合に出現していることはない.
      *
      * @param int x 節点x
      */
@@ -65,9 +73,9 @@ struct disjoint_set {
         if (rank[x] > rank[y]) {  // x.rank > y.rankならば、
             p[y] = x;             // yの親はxを指す
         }
-        else {                    // x.rank <= y.rankならば、 
+        else {                    // x.rank <= y.rankならば、
             p[x] = y;             // xの親はyを指す
-            
+
             if (rank[x] == rank[y]) {   // x.rank == y.rankならば、
                 rank[y] = rank[y] + 1;  // y.rankをひとつ増やす
             }
@@ -95,32 +103,4 @@ struct disjoint_set {
 
 
 
-//****************************************
-// 関数の定義
-//****************************************
-
-int main()
-{
-    using namespace std;
-    
-    int a, b, q, n, t;
-
-    cin >> n >> q;
-
-    disjoint_set ds(n);
-    for (int i = 0; i < n; i++) { ds.make_set(i); }
-
-    for (int i = 0; i < q; i++) {
-        cin >> t >> a >> b;
-
-        if (t == 0) { ds.merge(a, b); }
-        else if (t == 1) {
-            if (ds.find_set(a) == ds.find_set(b)) cout << 1 << endl;
-            else                                  cout << 0 << endl;
-        }
-    }
-
-    return 0;
-}
-
-
+#endif  // end of DISJOINT_SETS_H

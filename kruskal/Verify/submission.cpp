@@ -2,7 +2,7 @@
  * @brief 最小全域木問題(minimum-spanning tree problem)における
  *        Kruskalのアルゴリズム(Kruskal's algorithms)の実装を行う
  * @note  関連URL: http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_12_A
- * @date  2016/04/17 ~ 2017/01/03
+ * @date  2016/04/17 ~ 2019/01/31
  */
 
 
@@ -130,18 +130,18 @@ GRAPH_END
 
 
 /**< @brief 素集合森 */
-struct disjoint_set {
+struct disjoint_sets {
     using index_t = std::int32_t;
     using rank_t  = std::int32_t;
-    
+
     std::vector<index_t> p;
     std::vector<rank_t> rank;
 
-    explicit disjoint_set(std::size_t size) : p(size, -1), rank(size, -1) {}
-    
+    explicit disjoint_sets(std::size_t size) : p(size, -1), rank(size, -1) {}
+
     /**
      * @brief xを唯一の要素(従って、代表元)としてもつ新しい集合を生成する.
-     * @note  集合は互いに素であるから、xがすでに別の集合に出現していることはない. 
+     * @note  集合は互いに素であるから、xがすでに別の集合に出現していることはない.
      *
      * @param int x 節点x
      */
@@ -174,9 +174,9 @@ struct disjoint_set {
         if (rank[x] > rank[y]) {  // x.rank > y.rankならば、
             p[y] = x;             // yの親はxを指す
         }
-        else {                    // x.rank <= y.rankならば、 
+        else {                    // x.rank <= y.rankならば、
             p[x] = y;             // xの親はyを指す
-            
+
             if (rank[x] == rank[y]) {   // x.rank == y.rankならば、
                 rank[y] = rank[y] + 1;  // y.rankをひとつ増やす
             }
@@ -233,14 +233,12 @@ GRAPH_BEGIN
  */
 std::pair<edges_t, weight_t> kruskal(const graph_t& G)
 {
-    index_t n = G.size();
-    disjoint_set ds(static_cast<std::size_t>(n));  // 互いな素な集合族のためのデータ構造を準備
+    const index_t n = G.size();
+    disjoint_sets ds(static_cast<std::size_t>(n));  // 互いな素な集合族のためのデータ構造を準備
     struct cmp { bool operator()(const edge& e, const edge& f) { return e.w < f.w; } };
     edges_t E;  // グラフGから集合G.Eを取り出す
     for (auto&& es : G) { for (auto&& e : es) { E.push_back(e); } }
 
-
-    
     weight_t w = 0; edges_t A;             // Aを空集合に初期化し、
     for (index_t v = 0; v < n; ++v) {      // 各頂点がそれぞれ1つの木である|V|本の木を生成する
         ds.make_set(v);
@@ -281,7 +279,9 @@ int main(void)
         for (int j = 0; j < n; j++) {
             int k;
             cin >> k;
-            if (k != -1) G[i].emplace_back(i, j, k);
+            if (k != -1) { 
+                G[i].emplace_back(i, j, k);
+            }
         }
     }
 
