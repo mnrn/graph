@@ -11,13 +11,21 @@ Update them regularly.
 
 Write the following algorithms.
 
-* Elementary Graph Algorithms(Breadth-first-search, Depth-first-search, Topological sort, Strongly connected components)
-* Minimun Spanning Trees(The algorithms of Kruskal and Prim)
-* Single-Source Shortest Path(The Bellman-Ford algorithm、Dijkstra's algorithm)
-* All-Pairs Shortest Paths(The Floyd-Warshall algorithm)
-* Maxinum Flow(The Ford-Fulkerson method、The Edmonds-Kerp algoerithm)
-
-And open source with a [public repository][mnrn] on GitHub.
+- Elementary Graph Algorithms
+  - Breadth-first-search
+  - Depth-first-search
+  - Topological sort
+  - Strongly connected components
+- Minimun Spanning Trees
+  - The algorithms of Kruskal and Prim
+- Single-Source Shortest Path
+  - The Bellman-Ford algorithm
+  - Dijkstra's algorithm
+- All-Pairs Shortest Paths
+  - The Floyd-Warshall algorithm
+- Maxinum Flow
+  - The Ford-Fulkerson method
+  - The Edmonds-Kerp algoerithm
 
 ## Demo
 
