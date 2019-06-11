@@ -7,7 +7,7 @@ There is a graph algorithm program collection written in C++.
 
 Update them regularly.
 
-## Description
+## Contents
 
 Write the following algorithms.
 
@@ -27,9 +27,9 @@ Write the following algorithms.
   - The Ford-Fulkerson method
   - The Edmonds-Kerp algoerithm
 
-## Demo
+## Verify
 
-I checked the algorithm with [AOJ][AOJ].  
+Checked the algorithm with [AOJ][AOJ].  
 The URL of the problem confirmed in submission.cpp in Verify existing in each directory is stuck.
 
 ## Reference
