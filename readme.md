@@ -9,7 +9,7 @@ Update them regularly.
 
 ## Contents
 
-Write the following algorithms.
+Include the following algorithms.
 
 - Elementary Graph Algorithms
   - Breadth-first-search
